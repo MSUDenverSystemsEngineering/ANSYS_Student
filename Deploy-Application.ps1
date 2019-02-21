@@ -144,7 +144,7 @@ Try {
 		}
 		#If neither installer exists or works, just blow the whole folder away (Fixes corrupt install)
 		If ((test-Path "$envProgramFiles\ANSYS Inc\")) {
-									rm -r "$envProgramFiles\ANSYS Inc"
+							Remove-Item -Recurse -Force "$envProgramFiles\ANSYS Inc"
 		}
 
 
