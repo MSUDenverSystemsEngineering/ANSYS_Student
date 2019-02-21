@@ -131,15 +131,15 @@ Try {
 		# Uninstalls v19.0
 		If(Test-Path "$envProgramFiles\ANSYS Inc\v190\Uninstall.exe") {
 								$exitCode = Execute-Process -Path "$envProgramFiles\ANSYS Inc\v190\Uninstall.exe" -Parameters "-silent" -WindowStyle "Hidden" -PassThru
-								#blow away any leftover files to ensure clean install. Hey look! RM -R works in powershell!
-								rm -r "$envProgramFiles\ANSYS Inc"
+								#blow away any leftover files to ensure clean install.
+								Remove-Item -Recurse -Force "$envProgramFiles\ANSYS Inc"
 								If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 		}
 		# Uninstalls v19.2
 		If(Test-Path "$envProgramFiles\ANSYS Inc\v192\Uninstall.exe") {
 								$exitCode = Execute-Process -Path "$envProgramFiles\ANSYS Inc\v192\Uninstall.exe" -Parameters "-silent" -WindowStyle "Hidden" -PassThru
-								#blow away any leftover files to ensure clean install. Hey look! RM -R works in powershell!
-								rm -r "$envProgramFiles\ANSYS Inc"
+								#blow away any leftover files to ensure clean install.
+							Remove-Item -Recurse -Force "$envProgramFiles\ANSYS Inc"
 								If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 		}
 		#If neither installer exists or works, just blow the whole folder away (Fixes corrupt install)
